@@ -8,6 +8,7 @@ class ResourcesDao {
 
   async getAllLatestResources() {
     const latestResourcesList = await models.Resources.findAll({
+      attributes: ["url", "description"],
       order: [["createdAt", "DESC"]]
     });
 
