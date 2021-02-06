@@ -5,15 +5,19 @@ const compression = require("compression");
 const cors = require("cors");
 const { sequelize } = require("./models");
 const routes = require("./api/index");
+const config = require("../config");
 
 const { notFound, errorHandler } = require("./middlewares/common");
 const logger = require("./utils/logger");
+const { config } = require("dotenv/types");
 
 const initalizeServer = async (app) => {
   // connect to DB
   await sequelize.authenticate();
 
-  await sequelize.sync({ force: true });
+  if (!config.isDev) {
+    await sequelize.sync({ force: true });
+  }
 
   // If we are behind some reverse proxy like Nginx then we can trust this
   app.enable("trust proxy");
