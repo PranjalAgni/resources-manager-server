@@ -27,6 +27,13 @@ const initalizeServer = async (app) => {
   app.use(helmet());
   app.use(morgan("combined", { stream: logger.stream }));
   app.use(express.json());
+
+  app.get("/", (_req, res, _next) => {
+    res.json({
+      status: "OK"
+    });
+  });
+
   app.use("/api/", routes);
   app.use(notFound);
   app.use(errorHandler);
