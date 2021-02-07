@@ -9,7 +9,6 @@ const config = require("../config");
 
 const { notFound, errorHandler } = require("./middlewares/common");
 const logger = require("./utils/logger");
-const { config } = require("dotenv/types");
 
 const initalizeServer = async (app) => {
   // connect to DB
