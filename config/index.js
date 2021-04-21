@@ -3,7 +3,7 @@ const appRoot = require("app-root-path");
 
 const config = dotenv.config();
 
-if (config.error) {
+if (process.env.NODE_ENV !== "production" && config.error) {
   throw new Error("Could not find .env file");
 }
 
