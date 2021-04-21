@@ -7,8 +7,6 @@ if (process.env.NODE_ENV !== "production" && config.error) {
   throw new Error("Could not find .env file");
 }
 
-process.env.NODE_ENV = "development" || process.env.NODE_ENV;
-
 module.exports = {
   isDev: process.env.NODE_ENV === "development",
   port: parseInt(process.env.PORT, 10),
