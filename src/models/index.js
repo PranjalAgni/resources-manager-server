@@ -1,5 +1,4 @@
 const { Sequelize, DataTypes } = require("sequelize");
-const config = require("../../config");
 const { db } = require("../../config");
 
 const sequelize = new Sequelize({
@@ -9,7 +8,11 @@ const sequelize = new Sequelize({
   username: db.username,
   password: db.password,
   logging: console.log,
-  ssl: config.isDev ? false : true
+  dialectOptions: {
+    ssl: {
+      rejectUnauthorized: false
+    }
+  }
 });
 
 const models = {
