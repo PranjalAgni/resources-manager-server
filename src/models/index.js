@@ -1,4 +1,5 @@
 const { Sequelize, DataTypes } = require("sequelize");
+const config = require("../../config");
 const { db } = require("../../config");
 
 const sequelize = new Sequelize({
@@ -7,7 +8,8 @@ const sequelize = new Sequelize({
   database: db.name,
   username: db.username,
   password: db.password,
-  logging: console.log
+  logging: console.log,
+  ssl: config.isDev ? false : true
 });
 
 const models = {
