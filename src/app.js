@@ -14,7 +14,7 @@ const initalizeServer = async (app) => {
   // connect to DB
   await sequelize.authenticate();
 
-  if (!config.isDev) {
+  if (config.isDev) {
     await sequelize.sync({ force: true });
   }
 
